@@ -1,0 +1,169 @@
+{
+    "questions": [
+        {
+            "question": "What is the key benefit of using React Router in a React application?",
+            "options": [
+                "Improved performance",
+                "Enhanced security",
+                "Client-side routing and navigation",
+                "Simplified component rendering"
+            ],
+            "correctOption": 2,
+            "points": 30
+        },
+        {
+            "question": "What is state in React used for?",
+            "options": [
+                "Styling components",
+                "Handling user interactions",
+                "Storing and managing data within a component",
+                "Defining routes in the application"
+            ],
+            "correctOption": 2,
+            "points": 10
+        },
+        {
+            "question": "What is the role of a reducer in Redux?",
+            "options": [
+                "To define the structure of the application's UI",
+                "To manage routing in the application",
+                "To specify how the application's state changes in response to actions",
+                "To handle user authentication"
+            ],
+            "correctOption": 2,
+            "points": 20
+        },
+        {
+            "question": "What is the purpose of the `componentDidMount` lifecycle method in a class component?",
+            "options": [
+                "To initialize the component's state",
+                "To update the component's state when it mounts",
+                "To perform actions after the component has been rendered to the DOM",
+                "To handle user interactions"
+            ],
+            "correctOption": 2,
+            "points": 30
+        },
+        {
+            "question": "What is the purpose of the `map` function in React when rendering lists of data?",
+            "options": [
+                "To create animations in the user interface",
+                "To define the styling of list elements",
+                "To transform each item in the list and render it in the UI",
+                "To handle user interactions within a list"
+            ],
+            "correctOption": 2,
+            "points": 20
+        },
+        {
+            "question": "What is the purpose of the `componentWillUnmount` lifecycle method in a class component?",
+            "options": [
+                "To initialize the component's state",
+                "To handle user input events",
+                "To perform cleanup tasks before the component unmounts",
+                "To define the component's UI structure"
+            ],
+            "correctOption": 2,
+            "points": 30
+        },
+        {
+            "question": "What is the purpose of the `useEffect` hook in React?",
+            "options": [
+                "To manage component state",
+                "To handle user authentication",
+                "To perform side effects in functional components",
+                "To define the component's initial state"
+            ],
+            "correctOption": 2,
+            "points": 30
+        },
+        {
+            "question": "What is a higher-order component (HOC) in React?",
+            "options": [
+                "A component with a higher number of child components",
+                "A component that encapsulates other components to share behavior",
+                "A component with a more complex UI structure",
+                "A component that is rendered above all other components in the hierarchy"
+            ],
+            "correctOption": 1,
+            "points": 30
+        },
+        {
+            "question": "What is the purpose of the `render` method in a React component?",
+            "options": [
+                "To perform asynchronous operations",
+                "To update the component's state",
+                "To define the component's UI structure",
+                "To handle user input"
+            ],
+            "correctOption": 2,
+            "points": 10
+        },
+        {
+            "question": "What is the significance of the `props` object in React components?",
+            "options": [
+                "It stores the component's internal state",
+                "It allows components to communicate and pass data",
+                "It handles routing in a React application",
+                "It defines the component's methods"
+            ],
+            "correctOption": 1,
+            "points": 10
+        },
+        {
+            "question": "What is JSX in React?",
+            "options": [
+                "A JavaScript library",
+                "A syntax extension for JavaScript",
+                "A package manager",
+                "A CSS preprocessor"
+            ],
+            "correctOption": 1,
+            "points": 10
+        },
+        {
+            "question": "What is the fundamental building block of React apps?",
+            "options": [
+                "Components",
+                "Blocks",
+                "Elements",
+                "Effects"
+            ],
+            "correctOption": 0,
+            "points": 10
+        },
+        {
+            "question": "What does Redux provide in a React application?",
+            "options": [
+                "A way to style components",
+                "A state management solution for handling application data",
+                "A built-in testing framework",
+                "A router for navigation"
+            ],
+            "correctOption": 1,
+            "points": 20
+        },
+        {
+            "question": "What is the purpose of the `useState` hook in React?",
+            "options": [
+                "To handle side effects in functional components",
+                "To define the component's initial state in a class component",
+                "To manage state in functional components",
+                "To define routes in a React application"
+            ],
+            "correctOption": 2,
+            "points": 20
+        },
+        {
+            "question": "What is the significance of the `key` prop when rendering lists in React?",
+            "options": [
+                "It is used to add styles to list items",
+                "It helps React identify each item uniquely in the list and optimize rendering",
+                "It defines the order of items in the list",
+                "It controls the visibility of list items"
+            ],
+            "correctOption": 1,
+            "points": 20
+        }
+    ]
+}
