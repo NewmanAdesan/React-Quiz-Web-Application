@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.app {@apply w-[100vw] h-[100vh] bg-neutral-900 text-white}
+h1 {@apply text-4xl font-light}
+.header {@apply flex gap-3 justify-center items-center py-4}
