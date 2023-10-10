@@ -4,13 +4,23 @@
 
 
 
-.app {@apply w-[100vw] h-[100vh] bg-neutral-900 text-white p-4}
+
 h1 {@apply text-4xl font-light}
 h2 {@apply text-3xl font-bold}
 h3 {@apply text-lg font-normal}
+
+
+.btn {@apply block text-[13px] px-4 py-2 bg-stone-700 border border-solid border-stone-700 hover:bg-stone-900 rounded-full}
+.btn-option {@apply w-full text-start mt-2 transition-all duration-300 hover:ml-4}
+
+
+.app {@apply w-[100vw] h-[100vh] bg-neutral-900 text-white p-4}
 .header {@apply flex gap-3 justify-center items-center py-4}
-.main {@apply w-full max-w-[400px] mx-auto} 
+.main {@apply w-full max-w-[400px] mx-auto mt-5} 
+
+
 .loading-container {@apply flex flex-col justify-center items-center text-lg}
 .error-container {@apply text-center border-white rounded-3xl bg-zinc-500 text-white text-sm mt-12 py-3} 
 .start-screen {@apply flex flex-col items-center text-center gap-4 mt-6}
-.btn {@apply text-sm px-4 py-2 bg-stone-700 border border-solid border-stone-700 hover:bg-stone-900 rounded-full}
+
+.question {@apply font-semibold mb-4}

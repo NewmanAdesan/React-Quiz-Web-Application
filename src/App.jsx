@@ -10,30 +10,39 @@ import Main from './components/Main';
 import Loader from './components/Loader';
 import Error from './components/Error';
 import StartScreen from './components/StartScreen';
+import Question from './components/Question';
 
 
 const initialState = {
   questions: [],
   // "loading", "error", "ready", "active", finished
   status: "loading",
+  index: 0,
 }
 
 const reducer = function (state, action) {
 
   switch (action.type) {
-    case "dataReceived":
+    case "data-received":
       return {
         ...state,
         questions: action.payload,
         status: "ready"
       }
 
-    case "dataFailed":
+    case "data-failed":
       console.log("There was an Error Fetching the Data.")
       return {
         ...state,
         status: "error",
       }
+
+    case "start-quiz":
+      return {
+        ...state,
+        status: "active"
+      }
+
     default:
       throw new Error("Incorrect Action Type");
   }
@@ -42,13 +51,13 @@ const reducer = function (state, action) {
 
 function App() {
 
-  const [{questions, status}, dispatch] = useReducer(reducer, initialState);
+  const [{questions, status, index}, dispatch] = useReducer(reducer, initialState);
 
   useEffect(()=>{
     fetch("http://localhost:9000/questions")
       .then(res => res.json())
-      .then(data => dispatch({type:"dataReceived", payload:data}))
-      .catch(data => dispatch({type:"dataFailed", payload:null}))
+      .then(data => dispatch({type:"data-received", payload:data}))
+      .catch(data => dispatch({type:"data-failed", payload:null}))
   }, [])
 
   return (
@@ -57,7 +66,8 @@ function App() {
       <Main>
         {status == "loading" && <Loader />}
         {status == "error" && <Error />}
-        {status == "ready" && <StartScreen numberOfQuestions={questions.length} />}
+        {status == "ready" && <StartScreen numberOfQuestions={questions.length} dispatch={dispatch} />}
+        {status == "active" && <Question questionData={questions[index]} />}
       </Main>
     </div>
   )
