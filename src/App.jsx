@@ -14,10 +14,19 @@ import Question from './components/Question';
 
 
 const initialState = {
+
+
   questions: [],
+
+
   // "loading", "error", "ready", "active", finished
   status: "loading",
-  index: 0,
+
+  // index of the current question
+  index: 0, 
+
+  // user answer for the current question. initially it's null
+  answer: null,
 }
 
 const reducer = function (state, action) {
@@ -27,7 +36,8 @@ const reducer = function (state, action) {
       return {
         ...state,
         questions: action.payload,
-        status: "ready"
+        status: "ready",
+        answer: action.payload.map(()=>null)
       }
 
     case "data-failed":
@@ -43,6 +53,12 @@ const reducer = function (state, action) {
         status: "active"
       }
 
+    case "pick-option":
+      state.answer[state.index] = action.payload;
+      return {
+        ...state,
+      }
+
     default:
       throw new Error("Incorrect Action Type");
   }
@@ -51,7 +67,7 @@ const reducer = function (state, action) {
 
 function App() {
 
-  const [{questions, status, index}, dispatch] = useReducer(reducer, initialState);
+  const [{questions, status, index, answer}, dispatch] = useReducer(reducer, initialState);
 
   useEffect(()=>{
     fetch("http://localhost:9000/questions")
@@ -67,7 +83,7 @@ function App() {
         {status == "loading" && <Loader />}
         {status == "error" && <Error />}
         {status == "ready" && <StartScreen numberOfQuestions={questions.length} dispatch={dispatch} />}
-        {status == "active" && <Question questionData={questions[index]} />}
+        {status == "active" && <Question questionData={questions[index]} answer={answer[index]} dispatch={dispatch}/>}
       </Main>
     </div>
   )
