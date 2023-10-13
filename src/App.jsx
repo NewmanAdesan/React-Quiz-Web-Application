@@ -11,6 +11,8 @@ import Loader from './components/Loader';
 import Error from './components/Error';
 import StartScreen from './components/StartScreen';
 import Question from './components/Question';
+import NextQuestionButton from './components/NextQuestionButton';
+import PrevQuestionButton from './components/PrevQuestionButton';
 
 
 const initialState = {
@@ -59,6 +61,18 @@ const reducer = function (state, action) {
         ...state,
       }
 
+    case "next-question":
+      return {
+        ...state,
+        index: state.index + 1,
+      }
+
+    case "prev-question":
+      return {
+        ...state,
+        index: state.index - 1,
+      }
+
     default:
       throw new Error("Incorrect Action Type");
   }
@@ -68,6 +82,7 @@ const reducer = function (state, action) {
 function App() {
 
   const [{questions, status, index, answer}, dispatch] = useReducer(reducer, initialState);
+  const numberOfQuestions = questions.length;
 
   useEffect(()=>{
     fetch("http://localhost:9000/questions")
@@ -82,8 +97,16 @@ function App() {
       <Main>
         {status == "loading" && <Loader />}
         {status == "error" && <Error />}
-        {status == "ready" && <StartScreen numberOfQuestions={questions.length} dispatch={dispatch} />}
-        {status == "active" && <Question questionData={questions[index]} answer={answer[index]} dispatch={dispatch}/>}
+        {status == "ready" && <StartScreen numberOfQuestions={numberOfQuestions} dispatch={dispatch} />}
+        {status == "active" && 
+          <>
+            <Question questionData={questions[index]} answer={answer[index]} dispatch={dispatch}/>
+            <div className='question-actions'>
+              <NextQuestionButton dispatch={dispatch} answer={answer[index]} lastQuestion={index == numberOfQuestions - 1}/>
+              <PrevQuestionButton dispatch={dispatch} firstQuestion={index == 0} />
+            </div>
+          </>  
+        }
       </Main>
     </div>
   )
