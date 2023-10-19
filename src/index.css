@@ -3,6 +3,16 @@
 @tailwind utilities;
 
 
+* {
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar {@apply w-[6px]}
+::-webkit-scrollbar-track {@apply bg-neutral-900}
+::-webkit-scrollbar-thumb {@apply bg-neutral-700 border border-solid border-neutral-600 rounded-lg }
+
+::-webkit-progress-bar {@apply w-full h-2 rounded-full}
+::-webkit-progress-value {@apply bg-blue-800 rounded-full}
 
 
 h1 {@apply text-4xl font-light}
@@ -16,9 +26,9 @@ h3 {@apply text-lg font-normal}
 
 
 /* styles associated with containers */
-.app {@apply w-[100vw] h-[100vh] bg-neutral-900 text-white p-4}
+.app {@apply h-full bg-neutral-900 text-white p-4}
 .header {@apply flex gap-3 justify-center items-center py-4}
-.main {@apply w-full max-w-[400px] mx-auto mt-5} 
+.main {@apply w-full h-full max-w-[400px] mx-auto mt-5} 
 
 
 /* styles associated with mutually exclusive components */
@@ -31,6 +41,8 @@ h3 {@apply text-lg font-normal}
 /* utility styles */
 .question {@apply font-semibold mb-4}
 .question-actions {@apply mt-2 flex flex-row-reverse justify-between}
+.progress-bar {@apply h-2 rounded-lg w-full}
+.progress-meta {@apply flex justify-between text-sm -mt-[5px] mb-4}
 
 
 
