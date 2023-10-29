@@ -1,6 +1,10 @@
 import React from 'react'
 
 /**
+ * FINISH SCREEN LAYOUT AND FUNCTIONALITY
+ * 
+ * When the last question has been answered, the FinishScreen Component is displayed which renders a UI that shows user score, current highscore & a button to restart the quiz
+ * 
  * 1) Setting up the Layout & Style of the Finish Screen
  * 1a) add a p element to show score
  * 1b) add another p element to show highscore
@@ -10,7 +14,8 @@ import React from 'react'
  * 
  * 
  * 2) Set Score feedback functionality
- * 2a) add the points prop, the totalPoints prop to the first p element
+ * 2a) Passed the `points state` and `totalPoint variable` as a prop to the FinishScreen Component.
+ * 2a) Rendered the `points props` and `totalPoints props` in the first `p element`.
  * 2b) in FinishScreen, using the points & totalPoints prop, calculate the percentage
  * 2c) based on the percentage (>90, >60, >30, <30) choose emojis
  * 2d) add the emoji to the first p element
@@ -18,16 +23,19 @@ import React from 'react'
  * 
  * 3) Setup HighScore functionality
  * 3a) add the highscore state set to zero in the initialState object
- * 3b) when the last question is answered, the finish button appear. on click of this finished button the action `answered-all-questions` is dispatched which simply sets the application status to `finished`. now also we would update the highscore state depending on it users score is greater than the current highscore.
- * 3d) the highscore state will be passed as a prop to the FinishScreen & rendered to the second p element
+ * 3b) when the last question is answered, 
+ *      - the finish button appear. 
+ *      - on click of this finished button the action `answered-all-questions` is dispatched which simply sets the application status to `finished`. 
+ *      - update the `answered-all-questions` such that the highscore state is updated if users score is greater than the current highscore.
+ * 3c) the highscore state will be passed as a prop to the FinishScreen & rendered to the second p element
  * 
  * 
  * 4) Restart Quiz functionality
  * 4a) add a new action type into our reducer that restart the quiz; this action is called `restart-quiz`
- * 4ai) the status state will be set to `ready`;
- * 4aii) the index state will be set to 0;
- * 4aiii) the answers state will be set to null;
- * 4aiv) the points state will be set to 0;
+ *      - the status state will be set to `ready`;
+ *      - the index state will be set to 0;
+ *      - the answers state will be set to null;
+ *      - the points state will be set to 0;
  * 4b) add the onClick attribute to the button element which will dispatch the action  `restart-quiz`
  * 
  */
