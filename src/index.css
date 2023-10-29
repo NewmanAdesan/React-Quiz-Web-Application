@@ -21,7 +21,7 @@ h3 {@apply text-lg font-normal}
 
 
 /* styles associated with button-type element */
-.btn {@apply block text-[13px] font-medium px-4 py-2 bg-stone-700 border border-solid border-stone-700 hover:bg-stone-900 rounded-full}
+.btn {@apply block text-[13px] capitalize font-medium px-4 py-2 bg-stone-700 border border-solid border-stone-700 hover:bg-stone-900 rounded-full}
 .btn-option {@apply w-full text-start mt-2 transition-all duration-300 hover:ml-4}
 
 
@@ -43,6 +43,7 @@ h3 {@apply text-lg font-normal}
 .question-actions {@apply mt-2 flex flex-row-reverse justify-between}
 .progress-bar {@apply h-2 rounded-lg w-full}
 .progress-meta {@apply flex justify-between text-sm -mt-[5px] mb-4}
+.score {@apply w-full bg-cyan-700 py-3 rounded-3xl mb-2 text-[15px] text-center}
 
 
 

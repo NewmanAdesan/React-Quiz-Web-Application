@@ -14,6 +14,8 @@ import Question from './components/Question';
 import NextQuestionButton from './components/NextQuestionButton';
 import PrevQuestionButton from './components/PrevQuestionButton';
 import ProgressBar from './components/ProgressBar';
+import FinishScreen from './components/FinishScreen';
+import QuestionButton from './components/QuestionButton';
 
 
 const initialState = {
@@ -26,11 +28,14 @@ const initialState = {
   // index of the current question
   index: 0, 
 
-  // user answer for the current question. initially it's null
-  answer: null,
+  // user answer for each question placed in an array. initially it's null
+  answers: null,
 
   // points won so far
   points: 0,
+
+  // game highscore
+  highscore: 0,
 }
 
 const reducer = function (state, action) {
@@ -41,7 +46,7 @@ const reducer = function (state, action) {
         ...state,
         questions: action.payload,
         status: "ready",
-        answer: action.payload.map(()=>null)
+        answers: action.payload.map(()=>null)
       }
 
     case "data-failed":
@@ -62,7 +67,7 @@ const reducer = function (state, action) {
       const cur = state.questions[state.index]
 
       // store user answer
-      state.answer[state.index] = action.payload;
+      state.answers[state.index] = action.payload;
 
       // add points to user if answer is correct
       return {
@@ -82,6 +87,22 @@ const reducer = function (state, action) {
         index: state.index - 1,
       }
 
+    case "answered-all-question":
+      return {
+        ...state,
+        status: "finished",
+        highscore: state.points > state.highscore ? state.points : state.highscore
+      }
+
+    case "restart-quiz":
+      return {
+        ...state,
+        status: "ready",
+        index: 0,
+        answers: state.answers.map(()=>null),
+        points: 0,
+      }
+
     default:
       throw new Error("Incorrect Action Type");
   }
@@ -90,7 +111,7 @@ const reducer = function (state, action) {
 
 function App() {
 
-  const [{questions, status, index, answer, points}, dispatch] = useReducer(reducer, initialState);
+  const [{questions, status, index, answers, points, highscore}, dispatch] = useReducer(reducer, initialState);
   const numberOfQuestions = questions.length;
   const totalPoint = questions.reduce((prev, cur) => prev = prev + cur.points, 0)
 
@@ -110,14 +131,16 @@ function App() {
         {status == "ready" && <StartScreen numberOfQuestions={numberOfQuestions} dispatch={dispatch} />}
         {status == "active" && 
           <>
-            <ProgressBar numberOfQuestionsAnswered={index} numberOfQuestions={numberOfQuestions} totalPoint={totalPoint} points={points}/>
-            <Question questionData={questions[index]} answer={answer[index]} dispatch={dispatch}/>
+            <ProgressBar numberOfQuestionsAnswered={index} numberOfQuestions={numberOfQuestions} totalPoint={totalPoint} points={points} answer={answers[index]}/>
+            <Question questionData={questions[index]} answer={answers[index]} dispatch={dispatch}/>
             <div className='question-actions'>
-              <NextQuestionButton dispatch={dispatch} answer={answer[index]} lastQuestion={index == numberOfQuestions - 1}/>
-              <PrevQuestionButton dispatch={dispatch} firstQuestion={index == 0} />
+              <QuestionButton type="next" dispatch={dispatch} answer={answers[index]} lastQuestion={index == numberOfQuestions - 1}/>
+              <QuestionButton type="finish" dispatch={dispatch} answeredAllQuestion={answers[numberOfQuestions-1] != null}/>
+              <QuestionButton type="prev" dispatch={dispatch} firstQuestion={index == 0} />
             </div>
           </>
         }
+        {status == "finished" && <FinishScreen points={points} totalPoint={totalPoint} highscore={highscore} dispatch={dispatch}/>}
       </Main>
     </div>
   )
