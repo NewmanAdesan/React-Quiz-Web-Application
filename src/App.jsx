@@ -149,7 +149,7 @@ function App() {
             <Question questionData={questions[index]} answer={answers[index]} dispatch={dispatch}/>
             <div className='question-actions'>
               <QuestionButton type="next" dispatch={dispatch} answer={answers[index]} lastQuestion={index == numberOfQuestions - 1}/>
-              <QuestionButton type="finish" dispatch={dispatch} answeredAllQuestion={answers[numberOfQuestions-1] != null}/>
+              <QuestionButton type="finish" dispatch={dispatch} answeredAllQuestion={answers.every((answer) => answer!==null)}/>
               <Timer time={time} dispatch={dispatch} />
               <QuestionButton type="prev" dispatch={dispatch} firstQuestion={index == 0} />
             </div>

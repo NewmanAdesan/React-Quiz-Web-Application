@@ -9,7 +9,7 @@
 
 ::-webkit-scrollbar {@apply w-[6px]}
 ::-webkit-scrollbar-track {@apply bg-neutral-900}
-::-webkit-scrollbar-thumb {@apply bg-neutral-700 border border-solid border-neutral-600 rounded-lg }
+::-webkit-scrollbar-thumb {@apply bg-neutral-700 rounded-lg }
 
 ::-webkit-progress-bar {@apply w-full h-2 rounded-full}
 ::-webkit-progress-value {@apply bg-blue-800 rounded-full}
@@ -22,13 +22,16 @@ h3 {@apply text-lg font-normal}
 
 /* styles associated with button-type element */
 .btn {@apply block text-[13px] capitalize font-medium px-4 py-2 bg-stone-700 border border-solid border-stone-700 hover:bg-stone-900 rounded-full}
-.btn-option {@apply w-full text-start mt-2 transition-all duration-300 hover:ml-4}
+.btn-option {@apply w-options-width text-start mt-2 transition-all duration-300 hover:ml-4}
 
 
 /* styles associated with containers */
-.app {@apply h-full bg-neutral-900 text-white p-4}
-.header {@apply flex gap-3 justify-center items-center py-4}
-.main {@apply w-full h-full max-w-[400px] mx-auto mt-5} 
+.app {@apply h-screen overflow-hidden bg-neutral-900 text-white p-2}
+.header {@apply flex gap-3 justify-center items-center h-header-height}
+.main {@apply h-main-height overflow-auto mt-5 pb-16} 
+.article {@apply w-full max-w-[400px] mx-auto} 
+.main::-webkit-scrollbar-thumb {@apply bg-transparent};
+.main:hover::-webkit-scrollbar-thumb {@apply bg-neutral-700}
 
 
 /* styles associated with mutually exclusive components */
@@ -40,10 +43,11 @@ h3 {@apply text-lg font-normal}
 
 /* utility styles */
 .question {@apply font-semibold mb-4}
-.question-actions {@apply mt-2 flex flex-row-reverse justify-between}
+.question-actions {@apply w-options-width mt-2 flex flex-row-reverse justify-between}
 .progress-bar {@apply h-2 rounded-lg w-full}
 .progress-meta {@apply flex justify-between text-sm -mt-[5px] mb-4}
 .score {@apply w-full bg-cyan-700 py-3 rounded-3xl mb-2 text-[15px] text-center}
+.pointer-event-none {pointer-events: none;}
 
 
 

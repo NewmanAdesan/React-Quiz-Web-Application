@@ -7,18 +7,18 @@ const typesObject = {
 }
 
 const QuestionButton = ({type, dispatch, answer, lastQuestion, firstQuestion, answeredAllQuestion}) => {
-  let returnNull = false;
+  let zeroOpacity = false;
 
-  if (type == "prev") returnNull = firstQuestion;
-  if (type == "next") returnNull = (answer==null || lastQuestion);
-  if (type == "finish") returnNull = (!answeredAllQuestion);
-//   if ((type=="prev" && firstQuestion) || (type="next" && (answer==null || lastQuestion)) || (type="finish" && !answeredAllQuestion) ) return null;
-
-//   console.log(next);
-  if (returnNull) return null;
+  if (type == "prev") zeroOpacity = firstQuestion;
+  // if (type == "next") zeroOpacity = (answer==null);
+  if (type == "next"){
+    if (lastQuestion && !answeredAllQuestion) zeroOpacity = true;
+    else if (lastQuestion) return null;
+  }
+  if (type == "finish" && !answeredAllQuestion) return null;
 
   return (
-    <button className='btn' onClick={()=>dispatch({type:typesObject[type]})}>{type}</button>
+    <button className={`btn ${zeroOpacity?"opacity-0 pointer-event-none":"opacity-100"}`} onClick={()=>dispatch({type:typesObject[type]})}>{type}</button>
   )
 }
 
